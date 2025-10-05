@@ -1,6 +1,6 @@
 import math
 import time
-
+from robot import normalize_angle
 from dotenv import load_dotenv
 import os
 from robot import Robot, CommandClient, TelemetryClient
@@ -27,8 +27,13 @@ if __name__ == "__main__":
     bot.turn_by_angle2(math.pi)
     bot.telemetry.visualize_lidar_front()
     bot.forward_to_the_wall()
-    time.sleep(0.5)
+    # time.sleep(0.5)
     bot.telemetry.visualize_lidar_front()
     print("*************************************************************************************************************************************************")
-    bot.turn_by_angle2(math.pi * 2 / 5)
+    bot.turn_by_angle2(normalize_angle(math.pi + math.pi / 1.8))
+    bot.forward_to_the_wall()
+    bot.telemetry.visualize_lidar_front()
+    bot.turn_by_angle2(normalize_angle(math.pi + math.pi / 1.85))
+    bot.telemetry.visualize_lidar_front()
+    bot.forward_to_the_wall()
     bot.telemetry.visualize_lidar_front()

@@ -118,7 +118,6 @@ class TelemetryClient:
     def visualize_lidar_front(self):
         self.update()
         ranges = self.lidar_ranges
-
         if not ranges:
             print("Нет данных лидара")
             return
@@ -199,7 +198,7 @@ class Robot:
     def forward_to_the_wall(self):
         self.logger.info("moving forward (acceleration-aware)")
         MAX_SPEED = 0.5  # ← безопасное значение даже при SPEEDUP=1
-        TARGET_STOP = 0.35
+        TARGET_STOP = 0.4
 
         while True:
             self.telemetry.update()
@@ -229,5 +228,3 @@ class Robot:
 def normalize_angle(angle):
     """Привести угол к диапазону [-pi, pi]"""
     return math.atan2(math.sin(angle), math.cos(angle))
-
-
